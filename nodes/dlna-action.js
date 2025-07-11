@@ -1,5 +1,11 @@
+const http = require("http");
+const https = require("https");
 const MediaRenderer = require("../lib/MediaRenderer");
 const fetch = require("node-fetch").default;
+
+// Disable default HTTP keep-alive introduced in Node.js 19+
+http.globalAgent.keepAlive = false;
+https.globalAgent.keepAlive = false;
 
 module.exports = function(RED) {
     MediaRenderer.Scan();
